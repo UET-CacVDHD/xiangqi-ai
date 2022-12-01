@@ -1,4 +1,11 @@
-pieces_dict = {
+DIRECTIONS = {
+    "tiến": '.',
+    "tấn": '.',
+    "bình": '-',
+    "lùi": '/',
+    "thoái": '/'
+}
+PIECES = {
     'tướng': 'G',
     'soái': 'G',
     'sĩ': 'S',
@@ -12,16 +19,14 @@ pieces_dict = {
     'binh': 'B',
     'chốt': 'B',
 }
-
-move_dict = {
-    'tiến': '+',
-    'tấn': '+',
-    'thoái': '.',
-    'lùi': '.',
-    'bình': '='
+VRCS = {
+    "trước": "t",
+    "trước giữa": "tg",
+    "sau giữa": "sg",
+    "giữa": "g",
+    "sau": "s"
 }
-
-number_dict = {
+NUMBERS = {
     'một': '1',
     'hai': '2',
     'ba': '3',
@@ -32,23 +37,4 @@ number_dict = {
     'bảy': '7',
     'tám': '8',
     'chín': '9'
-}
-
-position_dict = {
-    'trước': 't',
-    'trên': 't',
-    'sau': 's',
-    'dưới': 's',
-    'giữa': 'g',
-    'trước giữa': 'tg',
-    'sau giữa': 'sg'
-}
-
-special_command_dict = {
-    "ăn":'x',
-    "bắt":'x',
-    "chiếu": '+',
-    "chiếu tướng": '+',
-    "qua sông": '',
-    "sang sông": ''
 }
