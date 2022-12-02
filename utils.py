@@ -35,4 +35,4 @@ def get_decoder_ngram_model(tokenizer, ngram_lm_path):
 
 
 if __name__ == "__main__":
-    convert_audio_to_wav("A.mp3", "A.wav")
+    pass

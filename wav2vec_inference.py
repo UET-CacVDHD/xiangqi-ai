@@ -6,10 +6,9 @@ import os
 
 
 class Wav2vecInference:
-    def __init__(self, cache_dir: str, lm_file: str, beam_width: int = 500):
-        self.processor = Wav2Vec2Processor.from_pretrained("nguyenvulebinh/wav2vec2-base-vietnamese-250h",
-                                                           cache_dir=cache_dir)
-        self.model = Wav2Vec2ForCTC.from_pretrained("nguyenvulebinh/wav2vec2-base-vietnamese-250h", cache_dir=cache_dir)
+    def __init__(self, lm_file: str, beam_width: int = 500):
+        self.processor = Wav2Vec2Processor.from_pretrained("nguyenvulebinh/wav2vec2-base-vietnamese-250h")
+        self.model = Wav2Vec2ForCTC.from_pretrained("nguyenvulebinh/wav2vec2-base-vietnamese-250h")
 
         self.lm_file = lm_file
         self.tokenizer = self.processor.tokenizer
@@ -26,7 +25,6 @@ class Wav2vecInference:
         return greedy_search_output, beam_search_output
 
     def file_to_text(self, file):
-        # TODO: generate random names
         tmp_file = f"./tmp/tmp_{get_random_string()}.wav"
         convert_audio_to_wav(file, tmp_file)
         audio_input, samplerate = sf.read(tmp_file)
@@ -36,6 +34,6 @@ class Wav2vecInference:
 
 
 if __name__ == "__main__":
-    wav2vec_model = Wav2vecInference(cache_dir="./cache/", lm_file="lm.arpa")
+    wav2vec_model = Wav2vecInference(lm_file="lm.arpa")
     output = wav2vec_model.file_to_text("A.wav")
     print(output)

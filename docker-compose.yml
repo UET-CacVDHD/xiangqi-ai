@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  xiangqi-ai:
+    image: xiangqi-ai:1
+    container_name: xiangqi-ai
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8000:8000"
