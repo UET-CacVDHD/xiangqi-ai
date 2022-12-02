@@ -1,0 +1,11 @@
+*.mp3
+*.wav
+*.txt
+
+.idea
+.ipynb_checkpoints
+*.ipynb
+__pycache__
+cache
+
+kenlm

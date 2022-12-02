@@ -1,5 +1,5 @@
 from typing import Optional
-from command_constants import PIECES, VRCS, NUMBERS, DIRECTIONS
+from constants import PIECES, VRCS, NUMBERS, DIRECTIONS
 import re
 
 
