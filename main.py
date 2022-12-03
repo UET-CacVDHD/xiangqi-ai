@@ -3,7 +3,7 @@ import uvicorn
 from wav2vec_inference import Wav2vecInference
 
 
-wav2vec_model = Wav2vecInference(lm_file="lm.arpa")
+wav2vec_model = Wav2vecInference(lm_file="lm_1.arpa")
 app = FastAPI()
 
 

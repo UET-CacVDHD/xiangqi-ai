@@ -19,6 +19,7 @@ PIECES = {
     'binh': 'B',
     'chốt': 'B',
 }
+
 VRCS = {
     "trước": "t",
     "trước giữa": "tg",
@@ -82,4 +83,4 @@ NUMBER_DICT = {
     'chín': '9'
 }
 
-NUMBER_TO_TEXT = {v: k for k, v in NUMBER_DICT.items()}
+NUMBER_TO_TEXT = {int(v): k for k, v in NUMBER_DICT.items()}
