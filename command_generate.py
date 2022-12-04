@@ -441,8 +441,10 @@ for piece in PIECE_SYMBOL_TO_TEXTS:
     for name in PIECE_SYMBOL_TO_TEXTS[piece]:
         for position in positions_dict[piece]:
             checkmate_commands.append(f"{name} {position} chiếu tướng")
+            checkmate_commands.append(f"{name} {position} chiếu")
             for des_column in columns:
                 checkmate_commands.append(f"{name} {position} chiếu tướng {NUMBER_TO_TEXT[des_column]}")
+                checkmate_commands.append(f"{name} {position} chiếu {NUMBER_TO_TEXT[des_column]}")
 print(len(checkmate_commands))
 
 corpus = eat_commands + norm_commands * 200 + meta_commands * 10000 + checkmate_commands * 30
