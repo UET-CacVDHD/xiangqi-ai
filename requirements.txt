@@ -6,3 +6,4 @@ transformers
 https://github.com/kpu/kenlm/archive/master.zip
 torch
 pydub
+librosa

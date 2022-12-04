@@ -293,6 +293,8 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                     num_step = 1
                     sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                     g_moves.append(sent)
+                    sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name}"
+                    g_moves.append(sent)
     for move in moves:
         for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
             if move == '-':
@@ -302,6 +304,8 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
             else:
                 num_step = 1
                 sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[num_step]}"
+                g_moves.append(sent)
+                sent = f"{piece_name} {move_name}"
                 g_moves.append(sent)
 
 # Tốt
@@ -333,8 +337,12 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                     num_step = 1
                     sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                     b_moves.append(sent)
+                    sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name}"
+                    b_moves.append(sent)
                     for vrp in vrps:
                         sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
+                        b_moves.append(sent)
+                        sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name}"
                         b_moves.append(sent)
                 else:
                     for column_change in column_changes:
@@ -354,6 +362,8 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                     num_step = 1
                     sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[num_step]}"
                     b_moves.append(sent)
+                    sent = f"{piece_name} {position} {move_name}"
+                    b_moves.append(sent)
                 else:
                     for des_column in columns:
                         sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[des_column]}"
@@ -364,6 +374,8 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
             if move == '.':
                 num_step = 1
                 sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[num_step]}"
+                b_moves.append(sent)
+                sent = f"{piece_name} {move_name}"
                 b_moves.append(sent)
             else:
                 for des_column in columns:
