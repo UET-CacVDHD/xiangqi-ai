@@ -4,7 +4,7 @@ from wav2vec_inference import Wav2vecInference
 from command_converter import convert_text_to_command
 
 
-wav2vec_model = Wav2vecInference(lm_file="lm_1.arpa")
+wav2vec_model = Wav2vecInference(lm_file="lm_4.arpa")
 app = FastAPI()
 
 

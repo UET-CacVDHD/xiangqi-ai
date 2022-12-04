@@ -34,6 +34,7 @@ class Wav2vecInference:
 
 
 if __name__ == "__main__":
-    wav2vec_model = Wav2vecInference(lm_file="lm.arpa")
-    output = wav2vec_model.file_to_text("A.wav")
-    print(output)
+    pass
+    # wav2vec_model = Wav2vecInference(lm_file="lm.arpa")
+    # output = wav2vec_model.file_to_text("A.wav")
+    # print(output)

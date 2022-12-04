@@ -34,7 +34,6 @@ VRP_TEXT_TO_SYMBOL = {
     "dưới": "s",
 }
 
-# TODO: complete extend position
 EXTEND_POSITION_TEXT_TO_SYMBOL = {
     'trước': 't',
     'trên': 't',

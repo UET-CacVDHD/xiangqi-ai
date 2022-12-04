@@ -9,14 +9,16 @@ x_positions = set()
 name = 'X'
 moves = ['.', '-', '/']
 columns = list(range(1, 10))
-positions = ['trước', 'sau', 'trái', 'phải']
-confuse_positions = ['trước', 'sau']
+extend_positions = ['trước', 'sau', 'trái', 'phải',
+                    'trên', 'dưới']
+vrps = ['trước', 'sau',
+        'trên', 'dưới']
 
 for column in columns:
     x_positions.add(f"{NUMBER_TO_TEXT[column]}")
-    for confuse_position in confuse_positions:
-        x_positions.add(f"{confuse_position} {NUMBER_TO_TEXT[column]}")
-for position in positions:
+    for vrp in vrps:
+        x_positions.add(f"{vrp} {NUMBER_TO_TEXT[column]}")
+for position in extend_positions:
     x_positions.add(position)
 x_positions.add("")
 
@@ -28,19 +30,19 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                     for num_step in range(1, 10):
                         sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                         x_moves.append(sent)
-                        for confuse_position in confuse_positions:
-                            sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
+                        for vrp in vrps:
+                            sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                             x_moves.append(sent)
                 else:
                     for des_column in columns:
                         if des_column != column:
                             sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                             x_moves.append(sent)
-                            for confuse_position in confuse_positions:
-                                sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
+                            for vrp in vrps:
+                                sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                                 x_moves.append(sent)
 
-    for position in positions:
+    for position in extend_positions:
         for move in moves:
             for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 if move in ['.', '/']:
@@ -69,14 +71,16 @@ p_positions = set()
 name = 'P'
 moves = ['.', '/', '-']
 columns = list(range(1, 10))
-positions = ['trước', 'sau', 'trái', 'phải']
-confuse_positions = ['trước', 'sau']
+vrps = ['trước', 'sau',
+        'trên', 'dưới']
+extend_positions = ['trước', 'sau', 'trái', 'phải',
+                    'trên', 'dưới']
 
 for column in columns:
     p_positions.add(NUMBER_TO_TEXT[column])
-    for confuse_position in confuse_positions:
-        p_positions.add(f"{confuse_position} {NUMBER_TO_TEXT[column]}")
-for position in positions:
+    for vrp in vrps:
+        p_positions.add(f"{vrp} {NUMBER_TO_TEXT[column]}")
+for position in extend_positions:
     p_positions.add(position)
 p_positions.add("")
 
@@ -88,19 +92,19 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                     for num_step in range(1, 10):
                         sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                         p_moves.append(sent)
-                        for confuse_position in confuse_positions:
-                            sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
+                        for vrp in vrps:
+                            sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                             p_moves.append(sent)
                 else:
                     for des_column in columns:
                         if des_column != column:
                             sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                             p_moves.append(sent)
-                            for confuse_position in confuse_positions:
-                                sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
+                            for vrp in vrps:
+                                sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                                 p_moves.append(sent)
 
-    for position in positions:
+    for position in extend_positions:
         for move in moves:
             for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 if move in ['.', '/']:
@@ -129,15 +133,17 @@ m_positions = set()
 name = 'M'
 moves = ['.', '/']
 columns = list(range(1, 10))
-positions = ['trước', 'sau', 'trái', 'phải']
-confuse_positions = ['trước', 'sau']
+vrps = ['trước', 'sau',
+        'trên', 'dưới']
+extend_positions = ['trước', 'sau', 'trái', 'phải',
+                    'trên', 'dưới']
 column_changes = [-2, -1, 1, 2]
 
 for column in columns:
     m_positions.add(NUMBER_TO_TEXT[column])
-    for confuse_position in confuse_positions:
-        m_positions.add(f"{confuse_position} {NUMBER_TO_TEXT[column]}")
-for position in positions:
+    for vrp in vrps:
+        m_positions.add(f"{vrp} {NUMBER_TO_TEXT[column]}")
+for position in extend_positions:
     m_positions.add(position)
 m_positions.add("")
 
@@ -151,11 +157,11 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                         continue
                     sent = f'{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}'
                     m_moves.append(sent)
-                    for confuse_position in confuse_positions:
-                        sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
+                    for vrp in vrps:
+                        sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                         m_moves.append(sent)
 
-    for position in positions:
+    for position in extend_positions:
         for move in moves:
             for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for des_column in columns:
@@ -174,14 +180,16 @@ s_positions = set()
 name = 'S'
 moves = ['.', '/']
 columns = [4, 5, 6]
-positions = ['trước', 'sau', 'trái', 'phải']
-confuse_positions = ['trước', 'sau']
+extend_positions = ['trước', 'sau', 'trái', 'phải',
+                    'trên', 'dưới']
+vrps = ['trước', 'sau',
+        'trên', 'dưới']
 column_changes = [-1, 1]
 for column in columns:
     s_positions.add(NUMBER_TO_TEXT[column])
-    for confuse_position in confuse_positions:
-        s_positions.add(f"{confuse_position} {NUMBER_TO_TEXT[column]}")
-for position in positions:
+    for vrp in vrps:
+        s_positions.add(f"{vrp} {NUMBER_TO_TEXT[column]}")
+for position in extend_positions:
     s_positions.add(position)
 s_positions.add("")
 
@@ -196,10 +204,10 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                     sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                     s_moves.append(sent)
                     if column in [4, 6]:
-                        for confuse_position in confuse_positions:
-                            sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
+                        for vrp in vrps:
+                            sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                             s_moves.append(sent)
-    for position in positions:
+    for position in extend_positions:
         for move in moves:
             for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for des_column in columns:
@@ -218,15 +226,17 @@ t_positions = set()
 name = 'T'
 moves = ['.', '/']
 columns = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-positions = ['trước', 'sau', 'trái', 'phải']
-confuse_positions = ['trước', 'sau']
+extend_positions = ['trước', 'sau', 'trái', 'phải',
+                    'trên', 'dưới']
+vrps = ['trước', 'sau',
+        'trên', 'dưới']
 column_changes = [-2, 2]
 
 for column in columns:
     t_positions.add(NUMBER_TO_TEXT[column])
-    for confuse_position in confuse_positions:
-        t_positions.add(f"{confuse_position} {NUMBER_TO_TEXT[column]}")
-for position in positions:
+    for vrp in vrps:
+        t_positions.add(f"{vrp} {NUMBER_TO_TEXT[column]}")
+for position in extend_positions:
     t_positions.add(position)
 t_positions.add("")
 
@@ -240,10 +250,10 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                         continue
                     sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                     t_moves.append(sent)
-                    for confuse_position in confuse_positions:
-                        sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
+                    for vrp in vrps:
+                        sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                         t_moves.append(sent)
-    for position in positions:
+    for position in extend_positions:
         for move in moves:
             for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for des_column in columns:
@@ -301,13 +311,18 @@ name = 'B'
 moves = ['.', '-']
 columns = list(range(1, 10))
 column_changes = [1, -1]
-positions = []
-confuse_positions = ['trước', 'trước giữa', 'giữa', 'sau giữa', 'sau']
+extend_positions = ['trước', 'trước giữa', 'giữa', 'sau giữa', 'sau',
+                    'trên', 'trên giữa', 'dưới giữa', 'dưới',
+                    'trái', 'trái giữa', 'phải giữa', 'phải']
+vrps = ['trước', 'trước giữa', 'giữa', 'sau giữa', 'sau',
+        'trên', 'trên giữa', 'dưới giữa', 'dưới']
 
 for column in columns:
     b_positions.add(NUMBER_TO_TEXT[column])
-    for confuse_position in confuse_positions:
-        b_positions.add(f"{confuse_position} {NUMBER_TO_TEXT[column]}")
+    for vrp in vrps:
+        b_positions.add(f"{vrp} {NUMBER_TO_TEXT[column]}")
+for position in extend_positions:
+    b_positions.add(position)
 b_positions.add("")
 
 for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
@@ -318,8 +333,8 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                     num_step = 1
                     sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                     b_moves.append(sent)
-                    for confuse_position in confuse_positions:
-                        sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
+                    for vrp in vrps:
+                        sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                         b_moves.append(sent)
                 else:
                     for column_change in column_changes:
@@ -328,9 +343,32 @@ for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
                             continue
                         sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                         b_moves.append(sent)
-                        for confuse_position in confuse_positions:
-                            sent = f"{piece_name} {confuse_position} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
+                        for vrp in vrps:
+                            sent = f"{piece_name} {vrp} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[des_column]}"
                             b_moves.append(sent)
+
+    for position in extend_positions:
+        for move in moves:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
+                if move == '.':
+                    num_step = 1
+                    sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[num_step]}"
+                    b_moves.append(sent)
+                else:
+                    for des_column in columns:
+                        sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[des_column]}"
+                        b_moves.append(sent)
+
+    for move in moves:
+        for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
+            if move == '.':
+                num_step = 1
+                sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[num_step]}"
+                b_moves.append(sent)
+            else:
+                for des_column in columns:
+                    sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[des_column]}"
+                    b_moves.append(sent)
 
     for column in columns:
         sent = f"{piece_name} {NUMBER_TO_TEXT[column]} qua sông"
@@ -407,7 +445,7 @@ for piece in PIECE_SYMBOL_TO_TEXTS:
                 checkmate_commands.append(f"{name} {position} chiếu tướng {NUMBER_TO_TEXT[des_column]}")
 print(len(checkmate_commands))
 
-corpus = eat_commands + norm_commands * 80 + meta_commands * 5000 + checkmate_commands * 30
+corpus = eat_commands + norm_commands * 200 + meta_commands * 10000 + checkmate_commands * 30
 
 with open("commands.txt", "w") as outfile:
     for command in corpus:
