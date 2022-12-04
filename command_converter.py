@@ -27,7 +27,10 @@ def convert_text_to_elements(text: str):
 
 
 def convert_text_to_command(text: str):
-    list_parsed_text = convert_text_to_elements(text)
+    try:
+        list_parsed_text = convert_text_to_elements(text)
+    except:
+        return "undefined"
     for parsed_text in list_parsed_text:
         tokens = tuple([elem[0] for elem in parsed_text])
         if tokens in STRUCT_TO_COMMAND_TYPE:
@@ -36,7 +39,7 @@ def convert_text_to_command(text: str):
             return ''.join(command)
         else:
             continue
-    return "Not found"
+    return "undefined"
 
 
 if __name__ == "__main__":

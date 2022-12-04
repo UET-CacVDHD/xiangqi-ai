@@ -15,10 +15,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.post("/predict")
 def predict(file: UploadFile = File()):
-    output = wav2vec_model.file_to_text(file.file)
-    command = convert_text_to_command(output[1])
+    try:
+        output = wav2vec_model.file_to_text(file.file)
+        command = convert_text_to_command(output[1])
+    except:
+        return "undefined"
     return output, command
 
 
