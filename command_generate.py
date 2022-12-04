@@ -1,4 +1,7 @@
-from constants import GAME_COMMANDS, PIECE_NAMES, MOVE_NAMES, NUMBER_TO_TEXT
+from constants import META_COMMAND_TEXT_TO_SYMBOL, PIECE_SYMBOL_TO_TEXTS, \
+    NORM_OP_SYMBOL_TO_TEXTS, NUMBER_TO_TEXT
+
+# TODO: add extend positions
 
 # Xe
 x_moves = []
@@ -17,10 +20,10 @@ for position in positions:
     x_positions.add(position)
 x_positions.add("")
 
-for piece_name in PIECE_NAMES[name]:
+for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
     for column in columns:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 if move in ['.', '/']:
                     for num_step in range(1, 10):
                         sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
@@ -39,7 +42,7 @@ for piece_name in PIECE_NAMES[name]:
 
     for position in positions:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 if move in ['.', '/']:
                     for num_step in range(1, 10):
                         sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[num_step]}"
@@ -50,7 +53,7 @@ for piece_name in PIECE_NAMES[name]:
                         x_moves.append(sent)
 
     for move in moves:
-        for move_name in MOVE_NAMES[move]:
+        for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
             if move in ['.', '/']:
                 for num_step in range(1, 10):
                     sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[num_step]}"
@@ -77,10 +80,10 @@ for position in positions:
     p_positions.add(position)
 p_positions.add("")
 
-for piece_name in PIECE_NAMES[name]:
+for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
     for column in columns:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 if move in ['.', '/']:
                     for num_step in range(1, 10):
                         sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
@@ -99,7 +102,7 @@ for piece_name in PIECE_NAMES[name]:
 
     for position in positions:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 if move in ['.', '/']:
                     for num_step in range(1, 10):
                         sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[num_step]}"
@@ -110,7 +113,7 @@ for piece_name in PIECE_NAMES[name]:
                         p_moves.append(sent)
 
     for move in moves:
-        for move_name in MOVE_NAMES[move]:
+        for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
             if move in ['.', '/']:
                 for num_step in range(1, 10):
                     sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[num_step]}"
@@ -138,10 +141,10 @@ for position in positions:
     m_positions.add(position)
 m_positions.add("")
 
-for piece_name in PIECE_NAMES[name]:
+for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
     for column in columns:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for column_change in column_changes:
                     des_column = column + column_change
                     if des_column not in columns:
@@ -154,13 +157,13 @@ for piece_name in PIECE_NAMES[name]:
 
     for position in positions:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for des_column in columns:
                     sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[des_column]}"
                     m_moves.append(sent)
 
     for move in moves:
-        for move_name in MOVE_NAMES[move]:
+        for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
             for des_column in columns:
                 sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[des_column]}"
                 m_moves.append(sent)
@@ -182,10 +185,10 @@ for position in positions:
     s_positions.add(position)
 s_positions.add("")
 
-for piece_name in PIECE_NAMES[name]:
+for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
     for column in columns:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for column_change in column_changes:
                     des_column = column + column_change
                     if des_column not in columns:
@@ -198,13 +201,13 @@ for piece_name in PIECE_NAMES[name]:
                             s_moves.append(sent)
     for position in positions:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for des_column in columns:
                     sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[des_column]}"
                     s_moves.append(sent)
 
     for move in moves:
-        for move_name in MOVE_NAMES[move]:
+        for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
             for des_column in columns:
                 sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[des_column]}"
                 s_moves.append(sent)
@@ -227,10 +230,10 @@ for position in positions:
     t_positions.add(position)
 t_positions.add("")
 
-for piece_name in PIECE_NAMES[name]:
+for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
     for column in columns:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for column_change in column_changes:
                     des_column = column + column_change
                     if des_column not in columns:
@@ -242,13 +245,13 @@ for piece_name in PIECE_NAMES[name]:
                         t_moves.append(sent)
     for position in positions:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 for des_column in columns:
                     sent = f"{piece_name} {position} {move_name} {NUMBER_TO_TEXT[des_column]}"
                     t_moves.append(sent)
 
     for move in moves:
-        for move_name in MOVE_NAMES[move]:
+        for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
             for des_column in columns:
                 sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[des_column]}"
                 t_moves.append(sent)
@@ -265,10 +268,10 @@ for column in columns:
     g_positions.add(NUMBER_TO_TEXT[column])
 g_positions.add("")
 
-for piece_name in PIECE_NAMES[name]:
+for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
     for column in columns:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 if move == '-':
                     for column_change in column_changes:
                         des_column = column + column_change
@@ -281,7 +284,7 @@ for piece_name in PIECE_NAMES[name]:
                     sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
                     g_moves.append(sent)
     for move in moves:
-        for move_name in MOVE_NAMES[move]:
+        for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
             if move == '-':
                 for des_column in columns:
                     sent = f"{piece_name} {move_name} {NUMBER_TO_TEXT[des_column]}"
@@ -307,10 +310,10 @@ for column in columns:
         b_positions.add(f"{confuse_position} {NUMBER_TO_TEXT[column]}")
 b_positions.add("")
 
-for piece_name in PIECE_NAMES[name]:
+for piece_name in PIECE_SYMBOL_TO_TEXTS[name]:
     for column in columns:
         for move in moves:
-            for move_name in MOVE_NAMES[move]:
+            for move_name in NORM_OP_SYMBOL_TO_TEXTS[move]:
                 if move == '.':
                     num_step = 1
                     sent = f"{piece_name} {NUMBER_TO_TEXT[column]} {move_name} {NUMBER_TO_TEXT[num_step]}"
@@ -355,7 +358,7 @@ norm_commands.extend(b_moves)
 norm_commands.extend(p_moves)
 
 meta_commands = []
-for game_command in GAME_COMMANDS:
+for game_command in META_COMMAND_TEXT_TO_SYMBOL:
     meta_commands.append(game_command)
 
 
@@ -378,12 +381,12 @@ positions_dict = {
     "G": g_positions,
 }
 eat_commands = []
-for piece_1 in PIECE_NAMES:
-    for name_1 in PIECE_NAMES[piece_1]:
-        for piece_2 in PIECE_NAMES:
+for piece_1 in PIECE_SYMBOL_TO_TEXTS:
+    for name_1 in PIECE_SYMBOL_TO_TEXTS[piece_1]:
+        for piece_2 in PIECE_SYMBOL_TO_TEXTS:
             if piece_2 == "G":
                 continue
-            for name_2 in PIECE_NAMES[piece_2]:
+            for name_2 in PIECE_SYMBOL_TO_TEXTS[piece_2]:
                 for position_1 in positions_dict[piece_1]:
                     for position_2 in positions_dict[piece_2]:
                         eat_commands.append(" ".join(f"{name_1} {position_1} ăn {name_2} {position_2}".split()))
@@ -394,10 +397,10 @@ print(len(meta_commands))
 
 checkmate_commands = []
 columns = list(range(1, 10))
-for piece in PIECE_NAMES:
+for piece in PIECE_SYMBOL_TO_TEXTS:
     if piece == "G":
         continue
-    for name in PIECE_NAMES[piece]:
+    for name in PIECE_SYMBOL_TO_TEXTS[piece]:
         for position in positions_dict[piece]:
             checkmate_commands.append(f"{name} {position} chiếu tướng")
             for des_column in columns:
