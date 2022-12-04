@@ -3,6 +3,7 @@ import soundfile as sf
 import torch
 from utils import convert_audio_to_wav, get_decoder_ngram_model, get_random_string
 import os
+import librosa
 
 
 class Wav2vecInference:
@@ -14,6 +15,7 @@ class Wav2vecInference:
         self.tokenizer = self.processor.tokenizer
         self.ngram_lm_model = get_decoder_ngram_model(self.tokenizer, self.lm_file)
         self.beam_width = beam_width
+        self.sample_rate = 16000
 
     def inference(self, data, sample_rate):
         input_values = self.processor(data, sampling_rate=sample_rate, return_tensors="pt").input_values
@@ -27,8 +29,8 @@ class Wav2vecInference:
     def file_to_text(self, file):
         tmp_file = f"./tmp/tmp_{get_random_string()}.wav"
         convert_audio_to_wav(file, tmp_file)
-        audio_input, samplerate = sf.read(tmp_file)
-        assert samplerate == 16000
+        audio_input, samplerate = librosa.load(tmp_file, sr=self.sample_rate)
+        assert samplerate == self.sample_rate
         os.remove(tmp_file)
         return self.inference(audio_input, samplerate)
 
