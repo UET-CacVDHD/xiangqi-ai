@@ -135,7 +135,7 @@ TYPE_TO_TEXTS = {
     "PIECE": PIECE_LIST,
     "VRP": VRP_LIST,
     "NUMBER": NUMBER_LIST,
-    "CHECKMATE": ["chiếu tướng"],
+    "CHECKMATE": ["chiếu tướng", "chiếu"],
     "BEAT": ["ăn", "bắt"],
     "PASS_RIVER": ["qua sông", "sang sông"],
     "META": META_COMMAND_LIST,
