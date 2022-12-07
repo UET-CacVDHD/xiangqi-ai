@@ -23,7 +23,11 @@ def predict(file: UploadFile = File()):
         command = convert_text_to_command(output[1])
     except:
         return "undefined"
-    return output, command
+    return {
+        "greedySearchResult": output[0],
+        "beamSearchResult": output[1],
+        "command": command
+    }
 
 
 if __name__ == "__main__":

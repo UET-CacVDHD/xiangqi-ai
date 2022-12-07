@@ -36,7 +36,10 @@ def convert_text_to_command(text: str):
         if tokens in STRUCT_TO_COMMAND_TYPE:
             texts = [elem[1] for elem in parsed_text]
             command = [TOKEN_TO_TEXT_TO_SYMBOL[tokens[i]][texts[i]] for i in range(len(texts))]
-            return ''.join(command)
+            if STRUCT_TO_COMMAND_TYPE[tokens] == "META_COMMAND":
+                return f"meta:{''.join(command)}"
+            else:
+                return f"ext:{''.join(command)}"
         else:
             continue
     return "undefined"
