@@ -50,7 +50,7 @@ if __name__ == "__main__":
     print(convert_text_to_command("xe trước giữa một tiến hai"))
     # print(convert_text_to_elements("xe một tiến hai"))
     # print(convert_text_to_elements("xe tiến hai"))
-    print(convert_text_to_command("đầu hàng"))
+    print(convert_text_to_command("xe trước một chiếu bốn"))
     # print(convert_text_to_elements("tốt trước giữa một sang sông"))
     # print(convert_text_to_elements("xe trước một chiếu tướng năm"))
     # print(convert_text_to_elements("xe ăn tượng"))

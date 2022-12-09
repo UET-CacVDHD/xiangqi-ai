@@ -90,7 +90,13 @@ PIECE_SYMBOL_TO_TEXTS = {
 NORM_OP_SYMBOL_TO_TEXTS = {
     '.': ['tiến', 'tấn'],
     '-': ['bình'],
-    '/': ['thoái', 'lùi']
+    '/': ['thoái', 'lùi'],
+    "-t": ["sang trái"],
+    "-p": ["sang phải"],
+    ".-t": ["tiến trái", "tấn trái"],
+    ".-p": ["tiến phải", "tấn phải"],
+    "/-t": ["lùi trái", "thoái trái"],
+    "/-p": ["lùi phải", "thoái phải"]
 }
 
 
