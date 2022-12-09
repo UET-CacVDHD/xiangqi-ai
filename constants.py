@@ -1,12 +1,5 @@
 from collections import defaultdict
 
-NORM_OP_TEXT_TO_SYMBOL = {
-    "tiến": '.',
-    "tấn": '.',
-    "bình": '-',
-    "lùi": '/',
-    "thoái": '/'
-}
 PIECE_TEXT_TO_SYMBOL = {
     'tướng': 'G',
     'soái': 'G',
@@ -98,6 +91,18 @@ NORM_OP_SYMBOL_TO_TEXTS = {
     "/-t": ["lùi trái", "thoái trái"],
     "/-p": ["lùi phải", "thoái phải"]
 }
+NORM_OP_TEXT_TO_SYMBOL = dict()
+for k in NORM_OP_SYMBOL_TO_TEXTS:
+    for text in NORM_OP_SYMBOL_TO_TEXTS[k]:
+        NORM_OP_TEXT_TO_SYMBOL[text] = k
+        
+# NORM_OP_TEXT_TO_SYMBOL = {
+#     "tiến": '.',
+#     "tấn": '.',
+#     "bình": '-',
+#     "lùi": '/',
+#     "thoái": '/'
+# }
 
 
 NUMBER_TO_TEXT = {int(v): k for k, v in NUMBER_TEXT_TO_SYMBOL.items()}
